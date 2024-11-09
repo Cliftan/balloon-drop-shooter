@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Assignment 4</title>
+    <style>
+        #cannonball {
+            visibility: hidden;
+            position:absolute;
+            top: 9px;
+            left: 220px;
+        }
+        #carriage {
+            position:absolute;
+            top: 40px;
+        }
+        #wheel {
+            position:absolute;
+            left: 80px;
+            z-index: +2;
+        }
+        #turret {
+            position:absolute;
+            z-index: +1;
+        }
+        #cannon {
+            position:absolute;
+            top: 0px;
+            left: 0px;
+        }
+        body {
+            background-image: url(Background.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        span {
+            background-color: white;
+        }
+        #balloon {
+            width: 100px;
+            height: 140px;
+            position: absolute;
+            display: none;
+        }
+        #explosion {
+            width: 120px;
+            height:120px;
+            position: absolute;
+            display: none;
+        }
+    </style>
+    <script type=""text/javascript" src="assignment4.js"></script>
+</head>
+<body onkeydown="processKey(event)" onresize="init()">
+    <span>Cannon Moving Speed: <input id="speed" type="range" min="1" max="10" step="1" value="3" onchange="init()"></span>
+    <div id="cannon">
+        <img id="carriage" src="Carriage.png" alt="carraige image">
+        <img id="wheel" src="Wheel.png" alt="wheel image">
+        <img id="turret" src="Turret.png" alt="turret image">
+        <img id="cannonball" src="cannonball.png" alt="cannonball image">
+    </div>
+    <audio id="cannonshotaudio">
+        <source src="shot.m4a" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <img id="balloon" src="FuGo.png" alt="balloon image">
+    <img id="explosion" src="explosion.gif" alt="explosion gif">
+    <audio id="explosionaudio">
+        <source src="explosion.m4a" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <span>Score: <span id="score">0</span> | Lives left: <span id="lives">5</span></span>
+    <script>
+        var MyCannon = document.getElementById("cannon");
+        var MyTurret = document.getElementById("turret");
+        var MyCannonball = document.getElementById("cannonball");
+        var shotAudio = document.getElementById("cannonshotaudio");
+        var MyBalloon = document.getElementById("balloon");
+        var explosion = document.getElementById("explosion")
+        var explosionaudio = document.getElementById("explosionaudio")
+        init();
+        startBalloonDrop();
+    </script>
+</body>
+</html>
